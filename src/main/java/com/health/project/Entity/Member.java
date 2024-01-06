@@ -22,7 +22,7 @@ public class Member {
     @Column(nullable = false,length = 20,name = "member_id",unique = true)
     private String id;
 
-    @Column(nullable = false,length = 20,name = "member_password")
+    @Column(nullable = false,name = "member_password")
     private String password;
 
     private String name;
