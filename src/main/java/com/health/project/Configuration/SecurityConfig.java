@@ -17,12 +17,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable)
-                .httpBasic(AbstractHttpConfigurer::disable)
+                .httpBasic(AbstractHttpConfigurer::disable) // ui로 들어오는것
+                .csrf(AbstractHttpConfigurer::disable) // 크로스 사이트
+                .httpBasic(AbstractHttpConfigurer::disable) // 크로스 사이트
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorizeRequests)->
                         authorizeRequests
-                        .requestMatchers("/login").permitAll()//login은 토근 없이 가능
+                        .requestMatchers("/login/join").permitAll()//login은 토근 없이 가능
                         .requestMatchers(HttpMethod.POST,"/check/**").authenticated()); // POST요청은 토큰 필요
 
         return http.build();

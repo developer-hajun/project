@@ -3,6 +3,7 @@ package com.health.project.Repository;
 import com.health.project.Entity.Member;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
+import lombok.Getter;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,10 +13,11 @@ import static com.health.project.Entity.QMember.member;
 
 
 @Repository
+@Getter
 public class MemberRepository {
+
     private final EntityManager em;
     private final JPAQueryFactory query;
-
     public MemberRepository(EntityManager em) {
         this.em = em;
         this.query = new JPAQueryFactory(em);

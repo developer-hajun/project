@@ -15,4 +15,9 @@ import org.hibernate.annotations.ColumnDefault;
 public class MemberDto {
     private String username;
     private String password;
+
+    public MemberDto(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }
