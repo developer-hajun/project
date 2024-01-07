@@ -1,14 +1,11 @@
 package com.health.project.Repository;
 
-import com.health.project.Entity.Member;
-import com.health.project.Entity.inBody;
+import com.health.project.Entity.Body.inBody;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
-import static com.health.project.Entity.QMember.member;
 
 @Repository
 public class inbodyRepository {
@@ -25,4 +22,6 @@ public class inbodyRepository {
     public Optional<inBody> findByNo(Long no){
         return Optional.ofNullable(em.find(inBody.class, no));
     }
+
+
 }

@@ -2,7 +2,6 @@ package com.health.project.Controller.Member;
 
 import com.health.project.DTO.MemberDto;
 import com.health.project.DTO.MemberLoginDto;
-import com.health.project.Login.UserJoinRequest;
 import com.health.project.Service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

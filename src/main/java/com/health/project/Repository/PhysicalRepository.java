@@ -1,7 +1,6 @@
 package com.health.project.Repository;
 
-import com.health.project.Entity.Physical;
-import com.health.project.Entity.inBody;
+import com.health.project.Entity.Physical_test.Physical;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
@@ -23,4 +22,5 @@ public class PhysicalRepository {
     public Optional<Physical> findByNo(Long no){
         return Optional.ofNullable(em.find(Physical.class, no));
     }
+
 }

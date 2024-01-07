@@ -1,4 +1,4 @@
-package com.health.project.Entity;
+package com.health.project.Entity.Body;
 
 import jakarta.persistence.Embeddable;
 

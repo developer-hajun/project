@@ -1,11 +1,15 @@
-package com.health.project.Entity;
+package com.health.project.Entity.Microorganism;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Microbiome {
     @Id
@@ -19,4 +23,7 @@ public class Microbiome {
     private Hazard hazard;
 
     private String explanation;
+
+    @OneToMany(mappedBy = "microbiome")
+    private List<Microorganism> microorganismList = new ArrayList<>();
 }

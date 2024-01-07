@@ -1,8 +1,7 @@
 package com.health.project.Configuration;
 
-import com.health.project.Login.UserService;
+
 import com.health.project.Service.MemberService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

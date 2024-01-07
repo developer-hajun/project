@@ -1,4 +1,4 @@
-package com.health.project.Entity;
+package com.health.project.Entity.Member;
 
 import jakarta.persistence.Embeddable;
 import org.hibernate.annotations.ColumnDefault;

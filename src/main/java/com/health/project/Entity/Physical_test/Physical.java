@@ -1,6 +1,7 @@
-package com.health.project.Entity;
+package com.health.project.Entity.Physical_test;
 
 
+import com.health.project.Entity.Member.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -28,5 +29,8 @@ public class Physical {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_no")
     private Member member;
-
+    public void setMember(Member member){
+        this.member = member;
+        member.getPhysicalList().add(this);
+    }
 }

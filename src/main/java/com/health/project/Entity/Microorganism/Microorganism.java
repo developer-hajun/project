@@ -1,5 +1,6 @@
-package com.health.project.Entity;
+package com.health.project.Entity.Microorganism;
 
+import com.health.project.Entity.Member.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -25,4 +26,13 @@ public class Microorganism {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "microbiome_no")
     private Microbiome microbiome;
+
+    public void setMember(Member member){
+        this.member = member;
+        member.getMicroorganism().add(this);
+    }
+    public void setMicrobiome(Microbiome microbiome){
+        this.microbiome = microbiome;
+        microbiome.getMicroorganismList().add(this);
+    }
 }

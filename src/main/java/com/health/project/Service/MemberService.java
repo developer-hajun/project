@@ -1,13 +1,11 @@
 package com.health.project.Service;
 
-import com.health.project.Entity.Member;
+import com.health.project.Entity.Member.Member;
 import com.health.project.Exception.AppException;
 import com.health.project.Exception.ErrorCode;
-import com.health.project.Login.Users;
 import com.health.project.Repository.MemberRepository;
 import com.health.project.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

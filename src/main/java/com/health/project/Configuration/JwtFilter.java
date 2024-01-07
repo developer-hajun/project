@@ -1,9 +1,7 @@
 package com.health.project.Configuration;
 
-import com.health.project.Login.UserService;
 import com.health.project.Service.MemberService;
 import com.health.project.util.JwtTokenUtil;
-import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +14,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.net.http.HttpHeaders;
 import java.util.List;
 
 @RequiredArgsConstructor

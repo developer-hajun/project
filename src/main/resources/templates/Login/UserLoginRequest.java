@@ -1,11 +1,11 @@
-package com.health.project.Login;
+package templates.Login;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class UserJoinRequest {
+public class UserLoginRequest {
     private String username;
     private String password;
 }

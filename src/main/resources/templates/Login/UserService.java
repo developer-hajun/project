@@ -1,6 +1,5 @@
-package com.health.project.Login;
+package templates.Login;
 
-import com.health.project.Configuration.EncoderConfig;
 import com.health.project.Exception.AppException;
 import com.health.project.Exception.ErrorCode;
 import com.health.project.util.JwtTokenUtil;

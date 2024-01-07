@@ -1,5 +1,6 @@
-package com.health.project.Entity;
+package com.health.project.Entity.Body;
 
+import com.health.project.Entity.Member.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -26,4 +27,9 @@ public class inBody {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_no")
     private Member member;
+
+    public void setMember(Member member){
+        this.member = member;
+        member.getInBodies().add(this);
+    }
 }

@@ -1,10 +1,16 @@
-package com.health.project.Entity;
+package com.health.project.Entity.Member;
 
+import com.health.project.Entity.Body.inBody;
+import com.health.project.Entity.Dite.Managing_diet;
+import com.health.project.Entity.Microorganism.Microorganism;
+import com.health.project.Entity.Physical_test.Physical;
+import com.health.project.Entity.Workout.WorkOut;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.jdbc.Work;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +45,15 @@ public class Member {
         this.password = password;
         this.name = name;
     }
+
     @OneToMany(mappedBy = "member")
-    private List<Physical> physicalList = new ArrayList<>();
+    private List<Physical> physicalList = new ArrayList<>(); //체력측정
     @OneToMany(mappedBy = "member")
-    private List<Microorganism> microorganism = new ArrayList<>();
+    private List<Microorganism> microorganism = new ArrayList<>(); //미생물
+    @OneToMany(mappedBy = "member")
+    private List<Managing_diet> diets = new ArrayList<>(); //식단
+    @OneToMany(mappedBy = "member")
+    private List<WorkOut> workOuts = new ArrayList<>();//운동
+    @OneToMany(mappedBy = "member")
+    private List<inBody> inBodies = new ArrayList<>();//신체조성
 }

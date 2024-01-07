@@ -1,4 +1,4 @@
-package com.health.project.Login;
+package templates.Login;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.health.project.Login;
+package templates.Login;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

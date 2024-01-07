@@ -1,4 +1,4 @@
-package com.health.project.Login;
+package templates.Login;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
