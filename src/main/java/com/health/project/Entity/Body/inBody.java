@@ -5,10 +5,12 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter(value = AccessLevel.PROTECTED)
 public class inBody {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +34,5 @@ public class inBody {
         this.member = member;
         member.getInBodies().add(this);
     }
+
 }

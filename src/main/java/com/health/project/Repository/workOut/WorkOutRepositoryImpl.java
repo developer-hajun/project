@@ -1,39 +1,33 @@
-package com.health.project.Repository;
+package com.health.project.Repository.workOut;
 
-import com.health.project.Entity.Member.Member;
-import com.health.project.Entity.Workout.QWorkOut;
+import com.health.project.Entity.Microorganism.Microbiome;
 import com.health.project.Entity.Workout.WorkOut;
+import com.health.project.Repository.microbiome.MicrobiomeRepositoryCustom;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import lombok.Getter;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import static com.health.project.Entity.Member.QMember.member;
+import static com.health.project.Entity.Microorganism.QMicrobiome.microbiome;
+import static com.health.project.Entity.Microorganism.QMicroorganism.microorganism;
 import static com.health.project.Entity.Workout.QWorkOut.workOut;
+
 
 @Repository
 @Getter
-public class WorkOutRepository{
-    private final EntityManager em;
+public class WorkOutRepositoryImpl implements WorkOutRepositoryCustom {
+
     private final JPAQueryFactory query;
-    public WorkOutRepository(EntityManager em) {
-        this.em = em;
+    public WorkOutRepositoryImpl(EntityManager em) {
         this.query = new JPAQueryFactory(em);
     }
-    public void save(WorkOut workOut){
-        em.persist(workOut);
-    }
-    public List<WorkOut> findAll(){
-        return query.selectFrom(workOut).fetch();
-    }
-    public Optional<WorkOut> findByNo(Long no){
-        return Optional.ofNullable(em.find(WorkOut.class, no));
-    }
+    @Override
     public Optional<WorkOut> findWithMember(Long no){
         WorkOut workOut1 = query.selectFrom(workOut).join(workOut.member, member).fetchJoin().fetchOne();
         return Optional.ofNullable(workOut1);
     }
+
 }
