@@ -1,12 +1,16 @@
 package com.health.project.Repository.Member;
 
+import com.health.project.DTO.SerachCondition.MemberSearchCondition;
 import com.health.project.Entity.Member.Member;
+import com.health.project.Entity.Member.MemberRoll;
 import com.health.project.Entity.Member.QMember;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import lombok.Getter;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.health.project.Entity.Body.QinBody.inBody;
@@ -60,4 +64,27 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
         return Optional.ofNullable(member);
     }
 
+    @Override
+    public List<Member> WhereParam(MemberSearchCondition condition) {
+        return query.select(member)
+                .from(member)
+                .where(
+                        IdEq(condition.getId()),
+                        NameEq(condition.getName()),
+                        RollEq(condition.getRoll())
+                )
+                .fetch();
+    }
+
+    private BooleanExpression RollEq(MemberRoll roll) {
+        return roll!=null?member.roll.eq(roll):null;
+    }
+
+    private BooleanExpression NameEq(String name) {
+        return name!=null ? member.name.eq(name) : null;
+    }
+
+    private BooleanExpression IdEq(String id) {
+        return id!=null ? member.id.eq(id) : null;
+    }
 }

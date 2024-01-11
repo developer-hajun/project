@@ -1,10 +1,10 @@
 package com.health.project.Service;
 
+import com.health.project.DTO.SerachCondition.MemberSearchCondition;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Exception.AppException;
 import com.health.project.Exception.ErrorCode;
 import com.health.project.Repository.Member.MemberRepository;
-import com.health.project.Repository.Member.MemberRepositoryImpl;
 import com.health.project.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,9 +43,10 @@ public class MemberService {
     public List<Member> findAllMember(){
         return memberRepository.findAll();
     }
-
     public Member findOne(String id){
         return memberRepository.findByMemberId(id).get();
     }
-
+    public List<Member> findParam(MemberSearchCondition condition){
+       return memberRepository.WhereParam(condition);
+    }
 }
