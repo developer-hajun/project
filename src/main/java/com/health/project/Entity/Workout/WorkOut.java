@@ -1,5 +1,6 @@
 package com.health.project.Entity.Workout;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.health.project.Entity.Member.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class WorkOut {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_no")
+    @JsonIgnore
     private Member member;
 
     @OneToMany(mappedBy = "workOut")

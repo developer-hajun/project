@@ -1,6 +1,7 @@
 package com.health.project.Entity.Physical_test;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.health.project.Entity.Member.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -28,6 +29,7 @@ public class Physical {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_no")
+    @JsonIgnore
     private Member member;
     public void setMember(Member member){
         this.member = member;

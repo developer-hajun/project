@@ -1,5 +1,6 @@
 package com.health.project.Entity.Microorganism;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.health.project.Entity.Member.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -21,10 +22,12 @@ public class Microorganism {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_no")
+    @JsonIgnore
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "microbiome_no")
+    @JsonIgnore
     private Microbiome microbiome;
 
     public void setMember(Member member){
@@ -34,5 +37,10 @@ public class Microorganism {
     public void setMicrobiome(Microbiome microbiome){
         this.microbiome = microbiome;
         microbiome.getMicroorganismList().add(this);
+    }
+
+    public Microorganism(String name, double shame) {
+        this.name = name;
+        this.shame = shame;
     }
 }

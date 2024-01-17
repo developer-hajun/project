@@ -24,6 +24,9 @@ public class MemberService {
     @Value("${jwt.token.secret}")
     private String key;
     private Long expireTimeMs = 1000*60*60L;
+
+    //사용자용
+    @Transactional
     public void join(String id, String password, String name){
         memberRepository.findByMemberId(id).ifPresent(member -> {
             throw new AppException(ErrorCode.ID_DUPLICATED,id +"는 이미 있습니다.");
@@ -46,6 +49,8 @@ public class MemberService {
     public Member findOne(String id){
         return memberRepository.findByMemberId(id).get();
     }
+
+    //관리자용
     public List<Member> findParam(MemberSearchCondition condition){
        return memberRepository.WhereParam(condition);
     }

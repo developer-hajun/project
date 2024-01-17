@@ -4,6 +4,7 @@ import com.health.project.DTO.SerachCondition.MemberSearchCondition;
 import com.health.project.DTO.SerachCondition.MicrobiomeSearchCondition;
 import com.health.project.Entity.Microorganism.Hazard;
 import com.health.project.Entity.Microorganism.Microbiome;
+import com.health.project.Repository.Querydsl4RepositorySupport;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -20,19 +21,19 @@ import static com.health.project.Entity.Microorganism.QMicroorganism.microorgani
 
 @Repository
 @Getter
-public class MicrobiomeRepositoryImpl implements MicrobiomeRepositoryCustom {
+public class MicrobiomeRepositoryImpl extends Querydsl4RepositorySupport implements MicrobiomeRepositoryCustom {
 
-    private final JPAQueryFactory query;
-    public MicrobiomeRepositoryImpl(EntityManager em) {
-        this.query = new JPAQueryFactory(em);
+    public MicrobiomeRepositoryImpl() {
+        super(Microbiome.class);
     }
+
     @Override
     public Optional<Microbiome> findWithMicroorganism(Long no){
-        Microbiome microbiome1 = query.selectFrom(microbiome).join(microbiome.microorganismList, microorganism).fetchJoin().fetchOne();
+        Microbiome microbiome1 = selectFrom(microbiome).join(microbiome.microorganismList, microorganism).fetchJoin().fetchOne();
         return Optional.ofNullable(microbiome1);
     }
     public List<Microbiome> WhereParam(MicrobiomeSearchCondition condition){
-        return query.select(microbiome)
+        return select(microbiome)
                 .from(microbiome)
                 .where(
                         nameEq(condition.getName()),

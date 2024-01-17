@@ -1,5 +1,6 @@
 package com.health.project.Entity.Workout;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.health.project.Entity.Member.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -27,6 +28,7 @@ public class injury {
     }
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "workout_no")
+    @JsonIgnore
     private WorkOut workOut;
 
     public void setWorkOut(WorkOut workOut){

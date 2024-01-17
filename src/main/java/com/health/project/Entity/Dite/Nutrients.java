@@ -1,5 +1,6 @@
 package com.health.project.Entity.Dite;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class Nutrients {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "diet_no")
+    @JsonIgnore
     private Managing_diet diet;
     public void setDiet(Managing_diet diet){
         this.diet = diet;

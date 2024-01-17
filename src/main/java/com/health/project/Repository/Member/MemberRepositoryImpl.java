@@ -4,6 +4,7 @@ import com.health.project.DTO.SerachCondition.MemberSearchCondition;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Entity.Member.MemberRoll;
 import com.health.project.Entity.Member.QMember;
+import com.health.project.Repository.Querydsl4RepositorySupport;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
@@ -23,50 +24,49 @@ import static com.health.project.Entity.Workout.QWorkOut.workOut;
 
 @Repository
 @Getter
-public class MemberRepositoryImpl implements MemberRepositoryCustom{
-
-    private final JPAQueryFactory query;
-    public MemberRepositoryImpl(EntityManager em) {
-        this.query = new JPAQueryFactory(em);
+public class MemberRepositoryImpl  extends Querydsl4RepositorySupport implements MemberRepositoryCustom{
+    public MemberRepositoryImpl() {
+        super(Member.class);
     }
+
     @Override
     public Optional<Member> findByMemberId(String id){
-        return Optional.ofNullable(query.selectFrom(member).where(member.id.eq(id)).fetchOne());
+        return Optional.ofNullable(selectFrom(member).where(member.id.eq(id)).fetchOne());
     }
     @Override
     public Optional<Member> findWithDite(String id){
-        Member member = query.selectFrom(QMember.member).
+        Member member = selectFrom(QMember.member).
                 join(QMember.member.diets, managing_diet).fetchJoin().fetchOne();
         return Optional.ofNullable(member);
     }
     @Override
     public Optional<Member> findWithMicroorganism(String id){
-        Member member = query.selectFrom(QMember.member).
+        Member member = selectFrom(QMember.member).
                 join(QMember.member.microorganism,microorganism).fetchJoin().fetchOne();
         return Optional.ofNullable(member);
     }
     @Override
     public Optional<Member> findWithPhysical(String id){
-        Member member = query.selectFrom(QMember.member).
+        Member member = selectFrom(QMember.member).
                 join(QMember.member.physicalList,physical).fetchJoin().fetchOne();
         return Optional.ofNullable(member);
     }
     @Override
     public Optional<Member> findWithinBody(String id){
-        Member member = query.selectFrom(QMember.member).
+        Member member = selectFrom(QMember.member).
                 join(QMember.member.inBodies,inBody).fetchJoin().fetchOne();
         return Optional.ofNullable(member);
     }
     @Override
     public Optional<Member> findWithWorkOut(String id){
-        Member member = query.selectFrom(QMember.member).
+        Member member = selectFrom(QMember.member).
                 join(QMember.member.workOuts,workOut).fetchJoin().fetchOne();
         return Optional.ofNullable(member);
     }
 
     @Override
     public List<Member> WhereParam(MemberSearchCondition condition) {
-        return query.select(member)
+        return select(member)
                 .from(member)
                 .where(
                         IdEq(condition.getId()),
