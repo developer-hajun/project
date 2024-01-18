@@ -1,4 +1,4 @@
-package com.health.project.Entity.Microorganism;
+package templates.임시제외.microbiome;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -20,8 +20,7 @@ public class Microbiome {
 
     private String name;
 
-    @Enumerated(EnumType.STRING)
-    private Hazard hazard;
+
 
     private String explanation;
 

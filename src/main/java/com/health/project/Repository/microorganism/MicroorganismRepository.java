@@ -12,6 +12,5 @@ import java.util.Optional;
 public interface MicroorganismRepository extends JpaRepository<Microorganism,Long>,MicroorganismRepositoryCustom {
     @Query(value = "SELECT * FROM MICROORGANISM WHERE MEMBER_NO = ?1", nativeQuery = true)
     public List<Microorganism> findByMemberNo(Long no);
-    public Optional<Microorganism> findByName(String name);
 }
 

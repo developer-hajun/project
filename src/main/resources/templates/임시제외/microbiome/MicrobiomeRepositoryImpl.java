@@ -1,14 +1,10 @@
-package com.health.project.Repository.microbiome;
+package templates.임시제외.microbiome;
 
-import com.health.project.DTO.SerachCondition.MemberSearchCondition;
 import com.health.project.DTO.SerachCondition.MicrobiomeSearchCondition;
 import com.health.project.Entity.Microorganism.Hazard;
 import com.health.project.Entity.Microorganism.Microbiome;
 import com.health.project.Repository.Querydsl4RepositorySupport;
-import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import jakarta.persistence.EntityManager;
 import lombok.Getter;
 import org.springframework.stereotype.Repository;
 

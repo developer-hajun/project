@@ -31,15 +31,15 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
         String token = authentication.split(" ")[1];
-        String id= JwtTokenUtil.getId(token,secretKey);
-        logger.info("id="+id);
+        Long no= JwtTokenUtil.getNo(token,secretKey);
+        logger.info("no="+no);
         if(JwtTokenUtil.isExpired(token,secretKey)){
             logger.error("authentication이 만료");
             filterChain.doFilter(request,response);
             return;
         }
 
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(id,null, List.of(new SimpleGrantedAuthority("Member")));
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(no,null, List.of(new SimpleGrantedAuthority("Member")));
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         filterChain.doFilter(request,response);

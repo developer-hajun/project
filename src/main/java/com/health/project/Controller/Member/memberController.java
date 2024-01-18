@@ -32,6 +32,7 @@ public class memberController {
     private final Logger log = LoggerFactory.getLogger(getClass());
     @PostMapping("/join")
     public ResponseEntity<String> join(@RequestBody MemberDto dto){
+
         memberService.join(dto.getId(), dto.getPassword(),dto.getName());
         return ResponseEntity.ok().body("SUCCESS");
     }
@@ -46,7 +47,7 @@ public class memberController {
         Microorganism microorganism =  new Microorganism("a",1.1);
         microorganism.setMember(hajun);
         microorganismRepository.save(microorganism);
-        List<Microorganism> microorganisms = microorganismService.MemberMicroorganism(principal.getName());
+        List<Microorganism> microorganisms = microorganismService.MemberMicroorganism(Long.parseLong(principal.getName()));
         return microorganisms;
     }
 

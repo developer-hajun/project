@@ -1,6 +1,5 @@
-package com.health.project.Repository.microbiome;
+package templates.임시제외.microbiome;
 
-import com.health.project.DTO.SerachCondition.MemberSearchCondition;
 import com.health.project.DTO.SerachCondition.MicrobiomeSearchCondition;
 import com.health.project.Entity.Microorganism.Microbiome;
 

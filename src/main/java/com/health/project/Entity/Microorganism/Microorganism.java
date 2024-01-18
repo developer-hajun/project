@@ -25,19 +25,21 @@ public class Microorganism {
     @JsonIgnore
     private Member member;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "microbiome_no")
-    @JsonIgnore
-    private Microbiome microbiome;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "microbiome_no")
+//    @JsonIgnore
+//    private Microbiome microbiome;
 
+    @Enumerated(EnumType.STRING)
+    private Hazard hazard;
     public void setMember(Member member){
         this.member = member;
         member.getMicroorganism().add(this);
     }
-    public void setMicrobiome(Microbiome microbiome){
-        this.microbiome = microbiome;
-        microbiome.getMicroorganismList().add(this);
-    }
+//    public void setMicrobiome(Microbiome microbiome){
+//        this.microbiome = microbiome;
+//        microbiome.getMicroorganismList().add(this);
+//    }
 
     public Microorganism(String name, double shame) {
         this.name = name;

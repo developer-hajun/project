@@ -12,9 +12,9 @@ public class JwtTokenUtil  {
                 .getExpiration().before(new Date());
 
     }
-    public static String createToken(String id,String key,long expireTimeMs){
+    public static String createToken(Long no,String key,long expireTimeMs){
         Claims claims = Jwts.claims();
-        claims.put("id",id);
+        claims.put("no",no);
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
@@ -22,8 +22,8 @@ public class JwtTokenUtil  {
                 .signWith(SignatureAlgorithm.HS256,key)
                 .compact();
     }
-    public static String getId(String token,String secretKey){
+    public static Long getNo(String token, String secretKey){
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token)
-                .getBody().get("id", String.class);
+                .getBody().get("no", Long.class);
     }
 }

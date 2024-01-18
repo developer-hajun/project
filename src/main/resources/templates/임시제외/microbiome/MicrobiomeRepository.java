@@ -1,4 +1,4 @@
-package com.health.project.Repository.microbiome;
+package templates.임시제외.microbiome;
 
 import com.health.project.Entity.Microorganism.Hazard;
 import com.health.project.Entity.Microorganism.Microbiome;

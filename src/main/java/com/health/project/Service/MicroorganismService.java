@@ -23,20 +23,18 @@ public class MicroorganismService {
     @Value("${jwt.token.secret}")
     private String key;
     @Transactional
-    public void join(String id,String name, double shame){
-        microorganismRepository.findByName(name).ifPresent(
+    public void join(Long no,String name, double shame){
+        microorganismRepository.findWithMemberandId(no,name).ifPresent(
                 microorganism -> {
                     throw new AppException(ErrorCode.ID_DUPLICATED,name +"는 이미 있습니다.");
                 }
         );
-        Member member = memberRepository.findByMemberId(id).get();
+        Member member = memberRepository.findById(no).get();
         Microorganism microorganism = new Microorganism(name,shame);
         microorganism.setMember(member);
     }
-
-    public List<Microorganism> MemberMicroorganism(String Id){
-        Long Member_No = memberRepository.findByMemberId(Id).get().getNo();
-        return microorganismRepository.findByMemberNo(Member_No);
+    public List<Microorganism> MemberMicroorganism(Long no){
+        return microorganismRepository.findByMemberNo(no);
     }
 
 }

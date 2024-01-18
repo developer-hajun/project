@@ -40,7 +40,7 @@ public class MemberService {
         if(!encoder.matches(password,member.getPassword())){ //matchs왼쪽이 암호화 안된것 , 오른쪽이 암호화 된것
             throw new AppException(ErrorCode.INVALID_PASSWORD, member.getPassword()+"비밀번호가 틀렷습니다");
         }
-        String token = JwtTokenUtil.createToken(member.getId(),key,expireTimeMs);
+        String token = JwtTokenUtil.createToken(member.getNo(),key,expireTimeMs);
         return token;
     }
     public List<Member> findAllMember(){
