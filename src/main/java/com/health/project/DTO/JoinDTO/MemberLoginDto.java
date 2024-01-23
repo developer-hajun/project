@@ -1,4 +1,4 @@
-package com.health.project.DTO.Member;
+package com.health.project.DTO.JoinDTO;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -6,13 +6,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class MemberJoinDto {
+public class MemberLoginDto {
     private String id;
     private String password;
-    private String name;
-    public MemberJoinDto(String id, String password, String name) {
+    public MemberLoginDto(String id, String password ) {
         this.id = id;
         this.password = password;
-        this.name = name;
     }
 }

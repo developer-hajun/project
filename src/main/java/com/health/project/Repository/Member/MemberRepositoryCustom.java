@@ -1,6 +1,6 @@
 package com.health.project.Repository.Member;
 
-import com.health.project.DTO.Member.MemberSearchCondition;
+import com.health.project.DTO.SerachCondition.MemberSearchCondition;
 import com.health.project.Entity.Member.Member;
 import org.antlr.v4.runtime.misc.NotNull;
 

@@ -1,5 +1,9 @@
 package com.health.project.Service;
 
+import com.health.project.DTO.JoinDTO.Inbody.Body_Composition_Join_Dto;
+import com.health.project.DTO.JoinDTO.Inbody.Body_balance_Join_Dto;
+import com.health.project.DTO.JoinDTO.Inbody.Muscle_fat_Join_Dto;
+import com.health.project.DTO.JoinDTO.Inbody.Obesity_diagnosis_Join_Dto;
 import com.health.project.Entity.Body.*;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Repository.Member.MemberRepository;
@@ -9,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -19,11 +22,13 @@ public class InbodyService {
     private final InBodyRepository inBodyRepository;
 
     @Transactional
-    public void join(Long id){
-        Body_balance body_balance = new Body_balance(1,2,3,4,5);
-        Body_Composition bodyComposition = new Body_Composition(1,2,3,4);
-        Muscle_fat muscle_fat = new Muscle_fat(1,2,3);
-        Obesity_diagnosis obesity_diagnosis = new Obesity_diagnosis(1,2,3);
+    public void join(Long id, Body_balance_Join_Dto balanceJoinDto, Body_Composition_Join_Dto CompositionJoinDto,
+                     Muscle_fat_Join_Dto fatJoinDto, Obesity_diagnosis_Join_Dto diagnosisJoinDto)
+    {
+        Body_balance body_balance = new Body_balance(balanceJoinDto);
+        Body_Composition bodyComposition = new Body_Composition(CompositionJoinDto);
+        Muscle_fat muscle_fat = new Muscle_fat(fatJoinDto);
+        Obesity_diagnosis obesity_diagnosis = new Obesity_diagnosis(diagnosisJoinDto);
         inBody inBody = new inBody(bodyComposition,muscle_fat,obesity_diagnosis,body_balance);
         Member member = memberRepository.findById(id).get();
         inBody.setMember(member);

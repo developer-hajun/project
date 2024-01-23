@@ -7,7 +7,7 @@ import com.health.project.Entity.Physical_test.BasicPhysical;
 import com.health.project.Entity.Physical_test.TechnologyPhysical;
 import com.health.project.Entity.Workout.Fatigue;
 import com.health.project.Entity.Workout.WorkOut;
-import com.health.project.Entity.Workout.injury;
+import com.health.project.Entity.Workout.Injury;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -61,7 +61,7 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<inBody> inBodies = new ArrayList<>();//신체조성
     @OneToMany(mappedBy = "member")
-    private List<injury> injuries = new ArrayList<>();//부상
+    private List<Injury> injuries = new ArrayList<>();//부상
     @OneToMany(mappedBy = "member")
     private List<Fatigue> fatigues = new ArrayList<>();//피로도
 

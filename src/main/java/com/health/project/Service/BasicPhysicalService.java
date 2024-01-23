@@ -1,9 +1,8 @@
 package com.health.project.Service;
 
-import com.health.project.DTO.BasicPhysical.BasicPhysicalJoinDTO;
+import com.health.project.DTO.JoinDTO.BasicPhysicalJoinDTO;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Entity.Physical_test.BasicPhysical;
-import com.health.project.Entity.Physical_test.QBasicPhysical;
 import com.health.project.Repository.Member.MemberRepository;
 import com.health.project.Repository.physical.BasicPhysicalRepository;
 import com.querydsl.core.Tuple;
@@ -19,7 +18,6 @@ import java.util.List;
 public class BasicPhysicalService {
     private final BasicPhysicalRepository basicPhysicalRepository;
     private final MemberRepository memberRepository;
-
     @Transactional
     public void join(Long no, BasicPhysicalJoinDTO basicPhysicalJoinDTO){
         BasicPhysical physical = new BasicPhysical(

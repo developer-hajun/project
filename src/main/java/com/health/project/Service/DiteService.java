@@ -24,6 +24,7 @@ public class DiteService {
         //프론트에서 어떻게 값 가져오는지에ㅔ 따라 달라짐
         Managing_diet diet = new Managing_diet(foodName);
         diet.setMember(member);
+        diteRepository.save(diet);
     }
     public List<List<String>> Last3Food(Long no) {
         return diteRepository.findLast3Dite(no);

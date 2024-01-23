@@ -1,8 +1,7 @@
 package com.health.project.Service;
 
-import com.health.project.DTO.TechnologyPhysical.TechnologyPhysicalJoinDTO;
+import com.health.project.DTO.JoinDTO.TechnologyPhysicalJoinDTO;
 import com.health.project.Entity.Member.Member;
-import com.health.project.Entity.Physical_test.BasicPhysical;
 import com.health.project.Entity.Physical_test.TechnologyPhysical;
 import com.health.project.Repository.Member.MemberRepository;
 import com.health.project.Repository.physical.TechnologyPhysicalRepository;

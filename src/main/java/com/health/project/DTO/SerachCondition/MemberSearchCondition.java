@@ -1,4 +1,4 @@
-package com.health.project.DTO.Member;
+package com.health.project.DTO.SerachCondition;
 
 import com.health.project.Entity.Member.MemberRoll;
 import jakarta.persistence.EnumType;

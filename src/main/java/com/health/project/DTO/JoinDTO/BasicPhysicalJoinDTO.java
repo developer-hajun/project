@@ -1,4 +1,4 @@
-package com.health.project.DTO.BasicPhysical;
+package com.health.project.DTO.JoinDTO;
 
 import lombok.AccessLevel;
 import lombok.Data;

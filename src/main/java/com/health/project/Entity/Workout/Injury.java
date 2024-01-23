@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class injury {
+public class Injury {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "injury_no",nullable = false)
@@ -23,6 +23,7 @@ public class injury {
     private String injuryName;
 
     private int persistent;
+
     @CreationTimestamp
     private LocalDateTime localDateTime;
 
@@ -30,7 +31,7 @@ public class injury {
     @JoinColumn(name = "member_no")
     @JsonIgnore
     private Member member;
-    public injury(BodyPart part, String injuryName, int persistent) {
+    public Injury(BodyPart part, String injuryName, int persistent) {
         this.part = part;
         this.injuryName = injuryName;
         this.persistent = persistent;

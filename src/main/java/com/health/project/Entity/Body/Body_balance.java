@@ -1,5 +1,6 @@
 package com.health.project.Entity.Body;
 
+import com.health.project.DTO.JoinDTO.Inbody.Body_balance_Join_Dto;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -13,11 +14,11 @@ public class Body_balance {
     private float right_leg;
     private float left_leg;
 
-    public Body_balance(float right_arm, float left_arm, float body, float right_leg, float left_leg) {
-        this.right_arm = right_arm;
-        this.left_arm = left_arm;
-        this.body = body;
-        this.right_leg = right_leg;
-        this.left_leg = left_leg;
+    public Body_balance(Body_balance_Join_Dto balanceJoinDto) {
+        this.right_arm = balanceJoinDto.getRight_arm();
+        this.left_arm = balanceJoinDto.getLeft_arm();
+        this.body = balanceJoinDto.getBody();
+        this.right_leg = balanceJoinDto.getRight_leg();
+        this.left_leg = balanceJoinDto.getLeft_leg();
     }
 }

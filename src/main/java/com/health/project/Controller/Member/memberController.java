@@ -1,7 +1,7 @@
 package com.health.project.Controller.Member;
 
-import com.health.project.DTO.Member.MemberJoinDto;
-import com.health.project.DTO.Member.MemberLoginDto;
+import com.health.project.DTO.JoinDTO.MemberJoinDto;
+import com.health.project.DTO.JoinDTO.MemberLoginDto;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Entity.Microorganism.Microorganism;
 import com.health.project.Repository.microorganism.MicroorganismRepository;
