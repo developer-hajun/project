@@ -1,6 +1,6 @@
 package com.health.project.Service;
 
-import com.health.project.DTO.SerachCondition.MemberSearchCondition;
+import com.health.project.DTO.Member.MemberSearchCondition;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Exception.AppException;
 import com.health.project.Exception.ErrorCode;

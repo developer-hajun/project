@@ -10,7 +10,6 @@ public class JwtTokenUtil  {
     public static Boolean isExpired(String token,String secretKey){
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody()
                 .getExpiration().before(new Date());
-
     }
     public static String createToken(Long no,String key,long expireTimeMs){
         Claims claims = Jwts.claims();

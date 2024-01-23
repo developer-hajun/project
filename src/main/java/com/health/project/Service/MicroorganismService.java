@@ -20,6 +20,7 @@ import java.util.List;
 public class MicroorganismService {
     private final MicroorganismRepository microorganismRepository;
     private final MemberRepository memberRepository;
+
     @Value("${jwt.token.secret}")
     private String key;
     @Transactional
@@ -36,5 +37,4 @@ public class MicroorganismService {
     public List<Microorganism> MemberMicroorganism(Long no){
         return microorganismRepository.findByMemberNo(no);
     }
-
 }

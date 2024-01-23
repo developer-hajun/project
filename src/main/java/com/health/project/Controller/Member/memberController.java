@@ -1,7 +1,7 @@
 package com.health.project.Controller.Member;
 
-import com.health.project.DTO.MemberDto;
-import com.health.project.DTO.MemberLoginDto;
+import com.health.project.DTO.Member.MemberJoinDto;
+import com.health.project.DTO.Member.MemberLoginDto;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Entity.Microorganism.Microorganism;
 import com.health.project.Repository.microorganism.MicroorganismRepository;
@@ -31,8 +31,7 @@ public class memberController {
     private String key;
     private final Logger log = LoggerFactory.getLogger(getClass());
     @PostMapping("/join")
-    public ResponseEntity<String> join(@RequestBody MemberDto dto){
-
+    public ResponseEntity<String> join(@RequestBody MemberJoinDto dto){
         memberService.join(dto.getId(), dto.getPassword(),dto.getName());
         return ResponseEntity.ok().body("SUCCESS");
     }

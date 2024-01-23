@@ -1,6 +1,7 @@
-package templates.임시제외.microbiome;
+package com.health.project.Entity.Microorganism;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.health.project.Entity.Microorganism.Microorganism;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

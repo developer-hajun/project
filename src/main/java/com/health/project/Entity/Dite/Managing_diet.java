@@ -6,7 +6,9 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,17 +26,25 @@ public class Managing_diet {
     @JsonIgnore
     private Member member;
 
-    @OneToMany(mappedBy = "diet")
-    private List<Fat> fatList = new ArrayList<>();
-    @OneToMany(mappedBy = "diet")
-    private List<Carbohydrate> carbohydrates = new ArrayList<>();
-    @OneToMany(mappedBy = "diet")
-    private List<Protein> proteins = new ArrayList<>();
-    @OneToMany(mappedBy = "diet")
-    private List<Nutrients> nutrients = new ArrayList<>();
+    @CreationTimestamp
+    private LocalDateTime localDateTime;
+
+    @ElementCollection
+    private List<String> food_name;
     public void setMember(Member member){
         this.member = member;
         member.getDiets().add(this);
     }
 
+    public Managing_diet(List<String> food_name) {
+        this.food_name = food_name;
+    }
+    //    @OneToMany(mappedBy = "diet")
+//    private List<Fat> fatList = new ArrayList<>();
+//    @OneToMany(mappedBy = "diet")
+//    private List<Carbohydrate> carbohydrates = new ArrayList<>();
+//    @OneToMany(mappedBy = "diet")
+//    private List<Protein> proteins = new ArrayList<>();
+//    @OneToMany(mappedBy = "diet")
+//    private List<Nutrients> nutrients = new ArrayList<>();
 }

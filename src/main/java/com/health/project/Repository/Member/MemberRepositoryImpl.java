@@ -1,13 +1,11 @@
 package com.health.project.Repository.Member;
 
-import com.health.project.DTO.SerachCondition.MemberSearchCondition;
+import com.health.project.DTO.Member.MemberSearchCondition;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Entity.Member.MemberRoll;
 import com.health.project.Entity.Member.QMember;
 import com.health.project.Repository.Querydsl4RepositorySupport;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import jakarta.persistence.EntityManager;
 import lombok.Getter;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +16,6 @@ import static com.health.project.Entity.Body.QinBody.inBody;
 import static com.health.project.Entity.Dite.QManaging_diet.managing_diet;
 import static com.health.project.Entity.Member.QMember.member;
 import static com.health.project.Entity.Microorganism.QMicroorganism.microorganism;
-import static com.health.project.Entity.Physical_test.QPhysical.physical;
 import static com.health.project.Entity.Workout.QWorkOut.workOut;
 
 
@@ -43,12 +40,6 @@ public class MemberRepositoryImpl  extends Querydsl4RepositorySupport implements
     public Optional<Member> findWithMicroorganism(String id){
         Member member = selectFrom(QMember.member).
                 join(QMember.member.microorganism,microorganism).fetchJoin().fetchOne();
-        return Optional.ofNullable(member);
-    }
-    @Override
-    public Optional<Member> findWithPhysical(String id){
-        Member member = selectFrom(QMember.member).
-                join(QMember.member.physicalList,physical).fetchJoin().fetchOne();
         return Optional.ofNullable(member);
     }
     @Override

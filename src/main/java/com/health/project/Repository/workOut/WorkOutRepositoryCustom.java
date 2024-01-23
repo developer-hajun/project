@@ -2,10 +2,10 @@ package com.health.project.Repository.workOut;
 
 import com.health.project.Entity.Workout.WorkOut;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface WorkOutRepositoryCustom {
-    public Optional<WorkOut> findWithMember(Long no);
+    public List<WorkOut> findWorkOut(Long no);
 
 
 }

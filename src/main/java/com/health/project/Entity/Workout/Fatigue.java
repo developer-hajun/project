@@ -5,6 +5,9 @@ import com.health.project.Entity.Member.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,18 +22,19 @@ public class Fatigue {
 
     private int persistent;
 
+    @CreationTimestamp
+    private LocalDateTime localDateTime;
     public Fatigue(BodyPart part, int persistent) {
         this.part = part;
         this.persistent = persistent;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workout_no")
+    @JoinColumn(name = "member_no")
     @JsonIgnore
-    private WorkOut workOut;
-
-    public void setWorkOut(WorkOut workOut){
-        this.workOut = workOut;
-        workOut.getFatigues().add(this);
+    private Member member;
+    public void setMember(Member member){
+        this.member = member;
+        member.getFatigues().add(this);
     }
 }

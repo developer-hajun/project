@@ -37,4 +37,10 @@ public class inBody {
         member.getInBodies().add(this);
     }
 
+    public inBody(Body_Composition composition, Muscle_fat muscle_fat, Obesity_diagnosis obesity_diagnosis, Body_balance body_balance) {
+        this.composition = composition;
+        this.muscle_fat = muscle_fat;
+        this.obesity_diagnosis = obesity_diagnosis;
+        this.body_balance = body_balance;
+    }
 }

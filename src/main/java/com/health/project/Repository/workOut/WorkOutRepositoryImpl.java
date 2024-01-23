@@ -6,7 +6,7 @@ import com.health.project.Repository.Querydsl4RepositorySupport;
 import lombok.Getter;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 import static com.health.project.Entity.Member.QMember.member;
 import static com.health.project.Entity.Workout.QWorkOut.workOut;
@@ -21,9 +21,9 @@ public class WorkOutRepositoryImpl extends Querydsl4RepositorySupport implements
         super(WorkOut.class);
     }
     @Override
-    public Optional<WorkOut> findWithMember(Long no){
-        WorkOut workOut1 = selectFrom(workOut).join(workOut.member, member).fetchJoin().fetchOne();
-        return Optional.ofNullable(workOut1);
+    public List<WorkOut> findWorkOut(Long no){
+        List<WorkOut> fetch = selectFrom(workOut).join(workOut.member, member).fetchJoin().where(member.no.eq(no)).fetch();
+        return fetch;
     }
 
 }

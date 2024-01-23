@@ -3,14 +3,16 @@ package com.health.project.Entity.Member;
 import com.health.project.Entity.Body.inBody;
 import com.health.project.Entity.Dite.Managing_diet;
 import com.health.project.Entity.Microorganism.Microorganism;
-import com.health.project.Entity.Physical_test.Physical;
+import com.health.project.Entity.Physical_test.BasicPhysical;
+import com.health.project.Entity.Physical_test.TechnologyPhysical;
+import com.health.project.Entity.Workout.Fatigue;
 import com.health.project.Entity.Workout.WorkOut;
+import com.health.project.Entity.Workout.injury;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.jdbc.Work;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +49,9 @@ public class Member {
     }
 
     @OneToMany(mappedBy = "member")
-    private List<Physical> physicalList = new ArrayList<>(); //체력측정
+    private List<BasicPhysical> basicPhysicalList = new ArrayList<>(); //기초체력
+    @OneToMany(mappedBy = "member")
+    private List<TechnologyPhysical> technologyPhysicals  = new ArrayList<>(); //기술체력
     @OneToMany(mappedBy = "member")
     private List<Microorganism> microorganism = new ArrayList<>(); //미생물
     @OneToMany(mappedBy = "member")
@@ -56,4 +60,9 @@ public class Member {
     private List<WorkOut> workOuts = new ArrayList<>();//운동
     @OneToMany(mappedBy = "member")
     private List<inBody> inBodies = new ArrayList<>();//신체조성
+    @OneToMany(mappedBy = "member")
+    private List<injury> injuries = new ArrayList<>();//부상
+    @OneToMany(mappedBy = "member")
+    private List<Fatigue> fatigues = new ArrayList<>();//피로도
+
 }

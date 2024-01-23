@@ -27,11 +27,6 @@ public class WorkOut {
     @JsonIgnore
     private Member member;
 
-    @OneToMany(mappedBy = "workOut")
-    private List<injury> injuryList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "workOut")
-    private List<Fatigue> fatigues = new ArrayList<>();
     public void setMember(Member member){
         this.member = member;
         member.getWorkOuts().add(this);
