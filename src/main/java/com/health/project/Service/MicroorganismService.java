@@ -34,7 +34,9 @@ public class MicroorganismService {
         Microorganism microorganism = new Microorganism(name,shame);
         microorganism.setMember(member);
     }
+    //DB저장
     public List<Microorganism> MemberMicroorganism(Long no){
         return microorganismRepository.findByMemberNo(no);
     }
+    //사용자가 가지고있는 미생물가져옴
 }

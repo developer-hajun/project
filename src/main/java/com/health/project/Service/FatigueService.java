@@ -21,5 +21,5 @@ public class FatigueService {
         fatigue.setMember(member);
         fatigueRepository.save(fatigue);
     }
-
+    //DB저장
 }

@@ -26,11 +26,13 @@ public class DiteService {
         diet.setMember(member);
         diteRepository.save(diet);
     }
+    //DB저장
     public List<List<String>> Last3Food(Long no) {
         return diteRepository.findLast3Dite(no);
     }
-
+    //마지막으로 먹은 3개의 식단을가져옴
     public List<Managing_diet> findAllDite(Long no){
         return diteRepository.findByMemberNo(no);
     }
+    //사용자가 먹은 모든 식단을 가져옴
 }

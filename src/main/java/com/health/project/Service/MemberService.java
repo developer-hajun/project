@@ -35,6 +35,7 @@ public class MemberService {
         Member member = new Member(id,EncodePassword,name);
         memberRepository.save(member);
     }
+    //DB저장 + 비밀번호 암호화
     public String login(String id,String password){
         Member member = memberRepository.findByMemberId(id).orElseThrow(() -> new AppException(ErrorCode.ID_NOT_FOUND, "존재하지 않는 id입니다."));
         if(!encoder.matches(password,member.getPassword())){ //matchs왼쪽이 암호화 안된것 , 오른쪽이 암호화 된것
@@ -43,15 +44,19 @@ public class MemberService {
         String token = JwtTokenUtil.createToken(member.getNo(),key,expireTimeMs);
         return token;
     }
+    //로그인 + 토큰발급
     public List<Member> findAllMember(){
         return memberRepository.findAll();
     }
+    //모든 시용자 정보 받아오기
     public Member findOne(String id){
         return memberRepository.findByMemberId(id).get();
     }
-
+    //특정 ID를 가진 사용자의 정보 가져오기
+    
     //관리자용
     public List<Member> findParam(MemberSearchCondition condition){
        return memberRepository.WhereParam(condition);
     }
+    //조건 통해서 사용자 정보가져오기
 }

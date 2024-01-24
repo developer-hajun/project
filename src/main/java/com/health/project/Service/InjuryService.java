@@ -21,4 +21,5 @@ public class InjuryService {
         injury.setMember(member);
         injuryRepository.save(injury);
     }
+    //DB저장
 }

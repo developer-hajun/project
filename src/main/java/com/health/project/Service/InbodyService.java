@@ -34,14 +34,14 @@ public class InbodyService {
         inBody.setMember(member);
         inBodyRepository.save(inBody);
     }
-
+    //DB저장
     public List<inBody> findAll(Long no){
         return inBodyRepository.findByMemberNo(no);
     }
-
+    //사용자가 가지고있는 모든 인바디를 가져옴
     public inBody findLastInbody(Long no){
         return inBodyRepository.findByMemberNo(no).get(0);
     }
-
+    //사용자의 마지막 인바디를 가져옴
 
 }
