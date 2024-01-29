@@ -50,8 +50,9 @@ public class BasicPhysicalService {
         //DTO로 변환해서 가져가기
     }
     //전체 기초체력 평균 반환
-    public void MemberLastPhysical(Long no){
+    public BasicPhysical MemberLastPhysical(Long no){
         BasicPhysical basicPhysical = basicPhysicalRepository.findLastPhysical(no).get();
+        return basicPhysical;
         //DTO로 변환해서 가져가기
     }
     //사용자의 마지막 기초체력 데이터만 가져옴

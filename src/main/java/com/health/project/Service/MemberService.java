@@ -1,9 +1,11 @@
 package com.health.project.Service;
 
 import com.health.project.DTO.SerachCondition.MemberSearchCondition;
+import com.health.project.Entity.Alarm.Alarm;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Exception.AppException;
 import com.health.project.Exception.ErrorCode;
+import com.health.project.Repository.AlarmRepository;
 import com.health.project.Repository.Member.MemberRepository;
 import com.health.project.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ import java.util.List;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final AlarmRepository alarmRepository;
     private final BCryptPasswordEncoder encoder;
     @Value("${jwt.token.secret}")
     private String key;
@@ -31,9 +34,12 @@ public class MemberService {
         memberRepository.findByMemberId(id).ifPresent(member -> {
             throw new AppException(ErrorCode.ID_DUPLICATED,id +"는 이미 있습니다.");
         });
+        Alarm alarm = new Alarm("D-FET에 오신걸 환영합니다");
         String EncodePassword = encoder.encode(password);
         Member member = new Member(id,EncodePassword,name);
         memberRepository.save(member);
+        alarm.setMember(member);
+        alarmRepository.save(alarm);
     }
     //DB저장 + 비밀번호 암호화
     public String login(String id,String password){

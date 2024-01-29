@@ -1,5 +1,6 @@
 package com.health.project.Entity.Member;
 
+import com.health.project.Entity.Alarm.Alarm;
 import com.health.project.Entity.Body.inBody;
 import com.health.project.Entity.Dite.Managing_diet;
 import com.health.project.Entity.Microorganism.Microorganism;
@@ -64,5 +65,7 @@ public class Member {
     private List<Injury> injuries = new ArrayList<>();//부상
     @OneToMany(mappedBy = "member")
     private List<Fatigue> fatigues = new ArrayList<>();//피로도
+    @OneToMany(mappedBy = "member")
+    private List<Alarm> alarms = new ArrayList<>();//알람
 
 }

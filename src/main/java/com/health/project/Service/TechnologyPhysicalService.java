@@ -35,19 +35,20 @@ public class TechnologyPhysicalService {
         technologyPhysicalRepository.save(technologyPhysical);
     }
     //DB저장
-    public List<TechnologyPhysical> MemberPhysical(String id){
-        Long no = memberRepository.findByMemberId(id).get().getNo();
+    public List<TechnologyPhysical> MemberPhysical(Long no){
         return technologyPhysicalRepository.findByMemberNo(no);
         //List안에 들어갈 객체를 DTO로 변환해서 반환
     }
     //사용자의 모든 기술체력 데이터를 가져옴
-    public void allAvg(Long no){
+    public Tuple allAvg(){
         Tuple allAvg = technologyPhysicalRepository.findAllAvg();
         //DTO로 변환해서 가져가기
+        return allAvg;
     }
     //모든 사용자의 기술체력 평균을 가져옴
-    public void MemberLastPhysical(Long no){
+    public TechnologyPhysical MemberLastPhysical(Long no){
         TechnologyPhysical technologyPhysical = technologyPhysicalRepository.findLastPhysical(no).get();
+        return technologyPhysical;
 //        //DTO로 변환해서 가져가기
     }
     //사용자의 마지막 기술체력을 가져옴
