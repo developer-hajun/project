@@ -56,7 +56,4 @@ public class BasicPhysicalService {
         //DTO로 변환해서 가져가기
     }
     //사용자의 마지막 기초체력 데이터만 가져옴
-
-
-
 }

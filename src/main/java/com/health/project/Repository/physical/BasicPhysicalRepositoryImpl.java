@@ -21,7 +21,6 @@ public class BasicPhysicalRepositoryImpl extends Querydsl4RepositorySupport impl
     public BasicPhysicalRepositoryImpl(EntityManager em) {
         super(BasicPhysical.class);
         this.query = new JPAQueryFactory(em);
-
     }
     @Override
     public Tuple findAllAvg() {

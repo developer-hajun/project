@@ -5,7 +5,7 @@ import com.health.project.Entity.Alarm.Alarm;
 import com.health.project.Entity.Member.Member;
 import com.health.project.Exception.AppException;
 import com.health.project.Exception.ErrorCode;
-import com.health.project.Repository.AlarmRepository;
+import com.health.project.Repository.Alarm.AlarmRepository;
 import com.health.project.Repository.Member.MemberRepository;
 import com.health.project.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
@@ -62,7 +62,7 @@ public class MemberService {
     
     //관리자용
     public List<Member> findParam(MemberSearchCondition condition){
-       return memberRepository.WhereParam(condition);
+        return memberRepository.WhereParam(condition);
     }
     //조건 통해서 사용자 정보가져오기
 }

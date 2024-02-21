@@ -3,7 +3,7 @@ package com.health.project.Service;
 import com.health.project.DTO.JoinDTO.AlarmJoinDto;
 import com.health.project.Entity.Alarm.Alarm;
 import com.health.project.Entity.Member.Member;
-import com.health.project.Repository.AlarmRepository;
+import com.health.project.Repository.Alarm.AlarmRepository;
 import com.health.project.Repository.Member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

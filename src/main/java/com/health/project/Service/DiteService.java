@@ -7,7 +7,6 @@ import com.health.project.Repository.Member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class DiteService {
     public void join(Long id){
         Member member = memberRepository.findById(id).get();
         List<String> foodName = new ArrayList<>();
-        //프론트에서 어떻게 값 가져오는지에ㅔ 따라 달라짐
+        //프론트에서 어떻게 값 가져오는지에 따라 달라짐
         Managing_diet diet = new Managing_diet(foodName);
         diet.setMember(member);
         diteRepository.save(diet);

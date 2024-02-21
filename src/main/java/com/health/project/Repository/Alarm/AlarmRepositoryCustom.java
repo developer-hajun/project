@@ -1,4 +1,4 @@
-package com.health.project.Repository;
+package com.health.project.Repository.Alarm;
 
 import com.health.project.Entity.Alarm.Alarm;
 

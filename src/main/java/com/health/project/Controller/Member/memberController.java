@@ -92,8 +92,4 @@ public class memberController {
         List<TechnologyPhysical> technologyPhysicals = technologyPhysicalService.MemberPhysical(Member_no);
         Tuple tuple = technologyPhysicalService.allAvg();
     }
-
-
-
-    
 }
