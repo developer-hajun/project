@@ -49,16 +49,6 @@ public class memberController {
     private String key;
 
     private final Logger log = LoggerFactory.getLogger(getClass());
-    @PostMapping("/join")
-    public ResponseEntity<String> join(@RequestBody MemberJoinDto dto){
-        memberService.join(dto.getId(), dto.getPassword(),dto.getName());
-        return ResponseEntity.ok().body("SUCCESS");
-    }
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody MemberLoginDto dto){
-        String token = memberService.login(dto.getId(), dto.getPassword());
-        return ResponseEntity.ok().body(token);
-    }
     @PostMapping("/Test")
     public List<Microorganism> test(Principal principal){
         Member hajun = memberService.findOne("hajun");

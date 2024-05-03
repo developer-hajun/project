@@ -44,9 +44,9 @@ public class MemberRepositoryImpl  extends Querydsl4RepositorySupport implements
     }
     @Override
     public Optional<Member> findWithinBody(String id){
-        Member member = selectFrom(QMember.member).
-                join(QMember.member.inBodies,inBody).fetchJoin().fetchOne();
-        return Optional.ofNullable(member);
+        Member members = selectFrom(member).
+                join(member.inBodies,inBody).fetchJoin().fetchOne();
+        return Optional.ofNullable(members);
     }
     @Override
     public Optional<Member> findWithWorkOut(String id){

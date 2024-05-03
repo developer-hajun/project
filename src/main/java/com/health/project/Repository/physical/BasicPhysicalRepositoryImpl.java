@@ -39,7 +39,7 @@ public class BasicPhysicalRepositoryImpl extends Querydsl4RepositorySupport impl
                 basicPhysical.Left_thigh_240.avg(),
                 basicPhysical.back_bending.avg(),
                 basicPhysical.forward_bend.avg()
-        ).from(basicPhysical).fetch().get(0);
+        ).from(basicPhysical).fetchOne();
     }
     @Override
     public Optional<BasicPhysical> findLastPhysical(Long no){
